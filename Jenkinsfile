@@ -7,18 +7,15 @@ pipeline {
                 sh 'echo "Hello guys 👋"'
             }
         }
-
-        stage("Checkout Repo") {
-            steps {
-                sh 'cd e-commerce'
+        stage{
+            steps("checkout to repo"){
+                sh 'git clone https://github.com/NipurJain4/e-commerce.git'
             }
         }
 
         stage("Docker Build") {
             steps {
-                dir('e-commerce') {
                     sh 'docker build -t mini-mart .'
-                }
             }
         }
 
